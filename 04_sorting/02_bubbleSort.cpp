@@ -9,7 +9,7 @@ using namespace std;
 // 5. repeat shrinking process till range 0 to 1.
 
 // Time Complexity - O(n2) in Worst/Avg
-// In best case - O(n)
+// In best case - O(n), already sorted - no swap happened on 1st iteration
 // Space Complexity - O(1)
 
 void bubble_sort(int arr[], int n) {

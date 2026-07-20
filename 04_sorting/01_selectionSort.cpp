@@ -5,7 +5,7 @@ using namespace std;
 // 1. choose a range in the given unsorted array, start with i = 0; (0 to n-1)
 // 2. find the minimum in the current range, 
 // 3. swap the minimum with current first index of the range, 0
-// 4. now we have sorted portion of array, (0 to first index of the range)
+// 4. now we have sorted portion of array, (0 to last index of the range)
 // 5. update the range, i = i+1, 
 // 6. repeat this till range (n-2 to n-1).
 
