@@ -16,6 +16,10 @@ using namespace std;
 
 int partition(int arr[], int low, int high) {
 
+   // Choose random pivot - worst case probability becomes extremely low
+   int randomIndex = low + (rand() % (high - low + 1));
+   swap(arr[low], arr[randomIndex]);
+
    int pivot = arr[low];
    int l = low;
    int r = high;
