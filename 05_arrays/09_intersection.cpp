@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// return INTERSECTION of two given 'sorted' arrays - common elements, preserve the duplicates 
+// return INTERSECTION of two given 'sorted' arrays - common elements, (preserve the duplicates) 
 
 // TC: O(N) & SC: O(1) excluding the memory used to store the output
 vector<int> findIntersection(vector<int> &a1, vector<int> &a2) {
@@ -30,9 +30,13 @@ vector<int> findIntersection(vector<int> &a1, vector<int> &a2) {
    return interArr;
 }
 
-// return INTERSECTION of two given arrays - common unique elements, any order
+// return INTERSECTION of two given arrays - common (unique) elements, any order
 
 vector<int> findIntersection2(vector<int> &a1, vector<int> &a2) {
+   if(a1.size() > a2.size()) {
+      return findIntersection2(a2, a1);
+   }
+
    unordered_set<int> st;
    vector<int> interArr;
    
