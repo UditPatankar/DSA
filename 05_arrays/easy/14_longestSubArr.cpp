@@ -25,8 +25,36 @@ using namespace std;
    return maxLen;
 } */
 
-// (both +ve & -ve)
+// (positive) - sliding window
 // # Optimal - TC: O(n) & SC: O(1)
+int findLengthOfSubArrayPos(vector<int> nums, int K) {
+   int n = nums.size();
+   int l = 0; int r = 0;   // two ends of the window
+   int maxLen = 0;   // answer
+   int sum = 0;   // tracker
+
+   while(r < n) {
+      sum += nums[r];
+
+      // Invalid window 
+      while(sum > K && l <= r) {
+         sum -= nums[l];
+         l++;  // shrink
+      }
+
+      // Valid window 
+      if(sum == K) {
+         maxLen = max(maxLen, r-l+1); // update the answer
+      }
+
+      // r grow anyways
+      r++;
+   }
+   return maxLen;
+}
+
+// (both +ve & -ve) - prefixSum
+// # Optimal - TC: O(n) & SC: O(n)
 int findLengthOfSubArray(vector<int> nums, int K) {
    unordered_map<int,int> pfSum;
    int curr_sum = 0;
@@ -50,7 +78,13 @@ int findLengthOfSubArray(vector<int> nums, int K) {
 }
 
 int main() {
-   vector<int> nums = {3}; //{0, 1, -1, 1, 3};
+   // (+ive only) 
+   vector<int> nums1 = {2, 3, 5, 1, 9};
+   int k1 = 8;
+   cout << findLengthOfSubArrayPos(nums1, k1) << endl;
+
+   // (+ive, -ive)
+   vector<int> nums = {0, 1, -1, 1, 3};
    int K = 3;
    cout << findLengthOfSubArray(nums, K) << endl;
 
